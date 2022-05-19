@@ -63,16 +63,6 @@ cytochrome P450 subtypes – in silico study</div>
 
     <select id="ligand-select" class="form-select" aria-label="Default select example">
       <option selected>Ligand</option>
-      <option value="0">Ligand 1</option>
-      <option value="1">Ligand 2</option>
-      <option value="2">Ligand 3</option>
-      <option value="3">Ligand 4</option>
-      <option value="4">Ligand 5</option>
-      <option value="5">Ligand 6</option>
-      <option value="6">Ligand 7</option>
-      <option value="7">Ligand 8</option>
-      <option value="8">Ligand 9</option>
-      <option value="9">Ligand 10</option>
     </select>
 
   </div>
@@ -88,6 +78,10 @@ cytochrome P450 subtypes – in silico study</div>
   }
   </style>
   <script>
+
+    for (i = 0; i < 100; i++) {
+      $('#ligand-select').append('<option value="' + i + '">Ligand ' + (i + 1) + '</option>')
+    }
 
     var proteinModel = null
     var ligandModel = null

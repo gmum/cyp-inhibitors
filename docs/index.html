@@ -10,217 +10,267 @@ layout: default
     }
 
     .description-box {
-        margin: 25px 0;
+        margin: 25px 20%;
         text-align: justify;
+        font-family: serif;
     }
 
     .app-box {
-        margin: 25px 0 0;
+        margin: 0;
         /*text-align: center;*/
+    }
+
+    .control-panel {
+        text-align: center;
+    }
+
+    .control-panel > div {
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        margin: 50px 10px 0;
+    }
+
+    .control-panel div span {
+        font-family: serif;
+        font-style: italic;
+        display: block;
+        margin-bottom: 10px;
     }
 </style>
 
 <div class="title-box">Generation of new inhibitors of selected
-cytochrome P450 subtypes – in silico study</div>
+    cytochrome P450 subtypes – in silico study
+</div>
 
-<div class="description-box"><em>Abstract.</em> Physicochemical and pharmacokinetic compound profile has crucial impact on its potency as a future drug. Compounds with desired activity profile cannot be used for treatment, if they are characterized by unfavourable physicochemical or ADMET properties. In the study, we consider metabolic stability and focus on selected cytochrome P450 subtypes - proteins, which take part in the first phase of compound transformations in the organism.
+<div class="description-box"><em>Abstract.</em> Physicochemical and pharmacokinetic compound profile has crucial impact
+    on its potency as a future drug. Compounds with desired activity profile cannot be used for treatment, if they are
+    characterized by unfavourable physicochemical or ADMET properties. In the study, we consider metabolic stability and
+    focus on selected cytochrome P450 subtypes - proteins, which take part in the first phase of compound
+    transformations in the organism.
 
-  In this work, we develop a protocol for generation of new inhibitors of selected CYPs. Its subsequent stages are composed of generation of new derivatives of known CYP inhibitors, docking and evaluation of the compound possible inhibition on the basis of the obtained ligand-protein complexes. In addition, we perform a systematic study on the influence of particular substitutions on the potential inhibition properties of generated compounds (both mono- and di- substitutions are considered). The developed methodology can greatly support the design of new CYP inhibitors with the overarching goal of generation of new metabolically stable compounds. It enables instant evaluation of possible compound-CYP interactions and selection of ligands with the highest potential power of CYP inhibition.</div>
+    In this work, we develop a protocol for generation of new inhibitors of selected CYPs. Its subsequent stages are
+    composed of generation of new derivatives of known CYP inhibitors, docking and evaluation of the compound possible
+    inhibition on the basis of the obtained ligand-protein complexes. In addition, we perform a systematic study on the
+    influence of particular substitutions on the potential inhibition properties of generated compounds (both mono- and
+    di- substitutions are considered). The developed methodology can greatly support the design of new CYP inhibitors
+    with the overarching goal of generation of new metabolically stable compounds. It enables instant evaluation of
+    possible compound-CYP interactions and selection of ligands with the highest potential power of CYP inhibition.
+
+    <br><br>
+
+    <a href="https://github.com/gmum/cyp-inhibitors"><i class="bi bi-github"></i> Code and data available here!</a>
+</div>
 
 <hr>
 
 <div class="app-box">
-  <div class='control-panel'>
+    <div class='control-panel'>
 
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="crystalState" id="inlineRadio1" value="active" checked>
-      <label class="form-check-label" for="inlineRadio1">crystal with inhibitor</label>
+        <div>
+            <h4>Crystal Structure</h4>
+            <span>Choose between a protein crytallized without a ligand<br>and crystallized with an inhibitor removed in data pre-processing.</span>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="crystalState" id="inlineRadio1" value="active" checked>
+                <label class="form-check-label" for="inlineRadio1">crystal with inhibitor</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="crystalState" id="inlineRadio2" value="free">
+                <label class="form-check-label" for="inlineRadio2">free crystal</label>
+            </div>
+        </div>
+
+        <div>
+            <h4>Ligand Visibility</h4>
+            <span>Toggle the visibility of the reference ligand and its analog<br>(with one substitution in a ring structure).</span>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="ref-check" checked>
+                <label class="form-check-label" for="ref-check">
+                    Reference ligand
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="analog-check" checked>
+                <label class="form-check-label" for="analog-check">
+                    Analog
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <h4>Protein and Ligand</h4>
+            <span>Choose the CYP isoform and one of the ligands<br>(ordered by the docking score difference between the reference ligand and its analog).</span>
+            <select id="protein-select" class="form-select" aria-label="Default select example">
+                <option selected>Target</option>
+                <option value="3A4">CYP 3A4</option>
+                <option value="2D6">CYP 2D6</option>
+                <option value="2C8">CYP 2C8</option>
+                <option value="2C9">CYP 2C9</option>
+            </select>
+
+            <select id="ligand-select" class="form-select" aria-label="Default select example">
+                <option selected>Ligand</option>
+            </select>
+        </div>
+
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="crystalState" id="inlineRadio2" value="free">
-      <label class="form-check-label" for="inlineRadio2">free crystal</label>
-    </div>
 
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value="" id="ref-check" checked>
-      <label class="form-check-label" for="ref-check">
-        Reference ligand
-      </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value="" id="analog-check" checked>
-      <label class="form-check-label" for="analog-check">
-        Analog
-      </label>
-    </div>
-    <select id="protein-select" class="form-select" aria-label="Default select example">
-      <option selected>Target</option>
-      <option value="3A4">CYP 3A4</option>
-      <option value="2D6">CYP 2D6</option>
-      <option value="2C8">CYP 2C8</option>
-      <option value="2C9">CYP 2C9</option>
-    </select>
+    <!--  <script src="https://3Dmol.org/build/3Dmol-min.js" async></script>-->
 
-    <select id="ligand-select" class="form-select" aria-label="Default select example">
-      <option selected>Ligand</option>
-    </select>
-
-  </div>
-
-<!--  <script src="https://3Dmol.org/build/3Dmol-min.js" async></script>-->
-
-  <div id="container-01" class="mol-container"></div>
-  <style>
-  .mol-container {
-    width: 100%;
-    height: 400px;
-    position: relative;
-  }
-  </style>
-  <script>
-
-    for (i = 0; i < 100; i++) {
-      $('#ligand-select').append('<option value="' + i + '">Ligand ' + (i + 1) + '</option>')
-    }
-
-    var proteinModel = null
-    var ligandModel = null
-    var referenceModel = null
-
-    let mapping = {
-        '3A4': {
-          active: '1W0G',
-          free: '1W0E',
-        },
-        '2D6': {
-          active: '3QM4',
-          free: '2F9Q',
-        },
-        '2C8': {
-          active: '2NNI',
-          free: '2PQ2',
-        },
-        '2C9': {
-          active: '4NZ2',
-          free: '1OG2',
+    <div id="container-01" class="mol-container"></div>
+    <style>
+        .mol-container {
+            width: 90%;
+            height: 600px;
+            position: relative;
+            margin: 50px auto;
+            box-shadow: 0 0 5px dimgray;
         }
-      }
+    </style>
+    <script>
 
-    function updateProtein(viewer) {
-      $('#ligand-select').val('Ligand').trigger('change.select2');
-      var target = $('#protein-select').val();
-      var crystalState = $("input[name='crystalState']:checked").val();
-      console.log( target + "_" + crystalState );
-      console.log( target + "_" + mapping[target][crystalState] );
-      var pdbUri = './assets/models/proteins/CYP' + target + "_" + mapping[target][crystalState] + '.pdb';
-      loadProtein(viewer, pdbUri);
-    }
-
-    function loadProtein(viewer, pdbUri) {
-      jQuery.ajax( pdbUri, {
-        success: function (data) {
-          viewer.clear();
-          proteinModel = viewer.addModel(data, "pdb");
-          viewer.setStyle({}, {cartoon: {style: "edged", color: "cyan"}});
-          viewer.setStyle({resn: 'HEM'}, {stick: {colorscheme: "lightgrayCarbon", radius: 0.1}});
-          viewer.zoomTo({model: -1});
-          viewer.render();
+        for (i = 0; i < 100; i++) {
+            $('#ligand-select').append('<option value="' + i + '">Ligand ' + (i + 1) + '</option>')
         }
-      });
-    }
 
-    function loadLigand(viewer) {
-      var ligand = $('#ligand-select').val()
-      if (ligand != 'Ligand') {
-        var target = $('#protein-select').val()
-        var crystalState = $("input[name='crystalState']:checked").val();
-        if ($('input#analog-check').is(':checked')) {
-          var molUri = './assets/models/ligands/pose' + ligand + '_CYP' + target + "_" + mapping[target][crystalState] + '.mol2';
-          jQuery.ajax(molUri, {
-            success: function (data) {
-              if (ligandModel != null) {
-                viewer.removeModel(ligandModel);
-              }
-              ligandModel = viewer.addModel(data, "mol2");
-              viewer.setStyle({model: ligandModel}, {
-                stick: {colorscheme: 'lightgreyCarbon', radius: 0.15},
-                sphere: {colorscheme: 'lightgreyCarbon', radius: 0.4}
-              });
-              viewer.zoomTo({model: -1}, 1000);
-              viewer.render();
+        var proteinModel = null
+        var ligandModel = null
+        var referenceModel = null
+
+        let mapping = {
+            '3A4': {
+                active: '1W0G',
+                free: '1W0E',
+            },
+            '2D6': {
+                active: '3QM4',
+                free: '2F9Q',
+            },
+            '2C8': {
+                active: '2NNI',
+                free: '2PQ2',
+            },
+            '2C9': {
+                active: '4NZ2',
+                free: '1OG2',
             }
-          });
-        } else {
-          if (ligandModel != null) {
-            viewer.removeModel(ligandModel);
-            ligandModel = null;
-            viewer.render();
-          }
         }
 
-        if ($('input#ref-check').is(':checked')) {
-          var molUri = './assets/models/ligands/pose' + ligand + '_ref_CYP' + target + "_" + mapping[target][crystalState] + '.mol2';
-          jQuery.ajax(molUri, {
-            success: function (data) {
-              if (referenceModel != null) {
-                viewer.removeModel(referenceModel);
-              }
-              referenceModel = viewer.addModel(data, "mol2");
-              viewer.setStyle({model: referenceModel}, {
-                stick: {colorscheme: 'limeCarbon', radius: 0.15},
-                sphere: {colorscheme: 'limeCarbon', radius: 0.4}
-              });
-              // viewer.zoomTo({model: -1}, 1000);
-              viewer.render();
+        function updateProtein(viewer) {
+            $('#ligand-select').val('Ligand').trigger('change.select2');
+            var target = $('#protein-select').val();
+            var crystalState = $("input[name='crystalState']:checked").val();
+            console.log(target + "_" + crystalState);
+            console.log(target + "_" + mapping[target][crystalState]);
+            var pdbUri = './assets/models/proteins/CYP' + target + "_" + mapping[target][crystalState] + '.pdb';
+            loadProtein(viewer, pdbUri);
+        }
+
+        function loadProtein(viewer, pdbUri) {
+            jQuery.ajax(pdbUri, {
+                success: function (data) {
+                    viewer.clear();
+                    proteinModel = viewer.addModel(data, "pdb");
+                    viewer.setStyle({}, {cartoon: {style: "edged", color: "cyan"}});
+                    viewer.setStyle({resn: 'HEM'}, {stick: {colorscheme: "lightgrayCarbon", radius: 0.1}});
+                    viewer.zoomTo({model: -1});
+                    viewer.render();
+                }
+            });
+        }
+
+        function loadLigand(viewer) {
+            var ligand = $('#ligand-select').val()
+            if (ligand != 'Ligand') {
+                var target = $('#protein-select').val()
+                var crystalState = $("input[name='crystalState']:checked").val();
+                if ($('input#analog-check').is(':checked')) {
+                    var molUri = './assets/models/ligands/pose' + ligand + '_CYP' + target + "_" + mapping[target][crystalState] + '.mol2';
+                    jQuery.ajax(molUri, {
+                        success: function (data) {
+                            if (ligandModel != null) {
+                                viewer.removeModel(ligandModel);
+                            }
+                            ligandModel = viewer.addModel(data, "mol2");
+                            viewer.setStyle({model: ligandModel}, {
+                                stick: {colorscheme: 'lightgreyCarbon', radius: 0.15},
+                                sphere: {colorscheme: 'lightgreyCarbon', radius: 0.4}
+                            });
+                            viewer.zoomTo({model: -1}, 1000);
+                            viewer.render();
+                        }
+                    });
+                } else {
+                    if (ligandModel != null) {
+                        viewer.removeModel(ligandModel);
+                        ligandModel = null;
+                        viewer.render();
+                    }
+                }
+
+                if ($('input#ref-check').is(':checked')) {
+                    var molUri = './assets/models/ligands/pose' + ligand + '_ref_CYP' + target + "_" + mapping[target][crystalState] + '.mol2';
+                    jQuery.ajax(molUri, {
+                        success: function (data) {
+                            if (referenceModel != null) {
+                                viewer.removeModel(referenceModel);
+                            }
+                            referenceModel = viewer.addModel(data, "mol2");
+                            viewer.setStyle({model: referenceModel}, {
+                                stick: {colorscheme: 'limeCarbon', radius: 0.15},
+                                sphere: {colorscheme: 'limeCarbon', radius: 0.4}
+                            });
+                            // viewer.zoomTo({model: -1}, 1000);
+                            viewer.render();
+                        }
+                    });
+                } else {
+                    if (referenceModel != null) {
+                        viewer.removeModel(referenceModel);
+                        referenceModel = null;
+                        viewer.render();
+                    }
+                }
+            } else {
+                if (ligandModel != null) {
+                    viewer.removeModel(ligandModel);
+                    ligandModel = null;
+                    viewer.zoomTo({model: proteinModel}, 1000);
+                    viewer.render();
+                }
             }
-          });
-        } else {
-          if (referenceModel != null) {
-            viewer.removeModel(referenceModel);
-            referenceModel = null;
-            viewer.render();
-          }
         }
-      } else {
-        if (ligandModel != null) {
-          viewer.removeModel(ligandModel);
-          ligandModel = null;
-          viewer.zoomTo({model: proteinModel}, 1000);
-          viewer.render();
-        }
-      }
-    }
 
-    $(function() {
-      let element = $('#container-01');
-      let config = { backgroundColor : 'white' };
-      let viewer = $3Dmol.createViewer( element, config );
+        $(function () {
+            let element = $('#container-01');
+            let config = {backgroundColor: 'white'};
+            let viewer = $3Dmol.createViewer(element, config);
 
-      $('#protein-select').on('change', function() {
-        updateProtein(viewer);
-      });
+            $('#protein-select').on('change', function () {
+                updateProtein(viewer);
+            });
 
-      $("input[name='crystalState']").on('change', function() {
-        updateProtein(viewer);
-      });
+            $("input[name='crystalState']").on('change', function () {
+                updateProtein(viewer);
+            });
 
-      $('#ligand-select').on('change', function() {
-        loadLigand(viewer);
-      });
+            $('#ligand-select').on('change', function () {
+                loadLigand(viewer);
+            });
 
-      $('#ref-check').on('change', function() {
-        loadLigand(viewer);
-      });
+            $('#ref-check').on('change', function () {
+                loadLigand(viewer);
+            });
 
-      $('#analog-check').on('change', function() {
-        loadLigand(viewer);
-      });
+            $('#analog-check').on('change', function () {
+                loadLigand(viewer);
+            });
 
-      var pdbUri = './assets/models/proteins/CYP3A4_1W0E.pdb';
-      var molUri = './assets/models/ligands/mol.mol2';
-      loadProtein(viewer, pdbUri)
+            // var pdbUri = './assets/models/proteins/CYP3A4_1W0E.pdb';
+            // var molUri = './assets/models/ligands/mol.mol2';
+            // loadProtein(viewer, pdbUri)
 
-    });
-  </script>
-<!--  {% include_relative poses/template.html %}-->
+        });
+    </script>
+    <!--  {% include_relative poses/template.html %}-->
 </div>

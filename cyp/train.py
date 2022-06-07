@@ -231,7 +231,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     # data arguments
     parser.add_argument('--cyp', type=str, default='CYP3A4_1W0E')
-    parser.add_argument('--data-path', type=str, default='./data')
+    parser.add_argument('--data-path', type=str, default='./data/molecules')
     # model arguments
     parser.add_argument('--grid-file', type=str, default=None)
     parser.add_argument('--epochs', type=int, default=100)
